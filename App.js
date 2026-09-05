@@ -1,3 +1,6 @@
+import React from "react";
+import { createRoot } from "react-dom/client";
+
 const appContainer = React.createElement("div", { id: "app-container" }, [
   React.createElement("div", { id: "container1" }, [
     React.createElement("h1", { id: "heading1" }, "I'am a h1 tag"),
@@ -9,5 +12,5 @@ const appContainer = React.createElement("div", { id: "app-container" }, [
   ]),
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root"));
 root.render(appContainer);
