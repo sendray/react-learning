@@ -41,6 +41,7 @@ body {
 .card {
   border: 1px solid #c7c4c4;
   border-radius: 4px;
+  cursor: pointer;
   padding: 8px;
   width: 250px;
 }
@@ -62,9 +63,35 @@ body {
 }
 
 .filter {
+  display: flex;
   margin-bottom: 20px;
+  gap: 20px;
 }
 
 .filter > button {
   cursor: pointer;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.shimmer-card {
+  background-color: #f0efef;
+  border: 1px solid #c7c4c4;
+  border-radius: 4px;
+  height: 300px;
+  padding: 8px;
+  width: 250px;
+}
+
+.login-btn {
+  cursor: pointer;
+  width: 96px;
+}
+
+.search-input {
+  margin-right: 10px;
 }
