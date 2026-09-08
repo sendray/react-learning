@@ -33,7 +33,7 @@ const CardContainer = () => {
   if (restaurantsDetails.length === 0) return <Shimmer />;
 
   return (
-    <>
+    <div className="app-body">
       <div className="filter">
         <div className="search">
           <input
@@ -72,7 +72,7 @@ const CardContainer = () => {
           <Card key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
