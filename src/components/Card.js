@@ -1,12 +1,12 @@
 const Card = (props) => {
-  const { name, email, phone, address, company } = props.resData;
+  const { name, email, address, company } = props.resData;
 
   return (
     <div className="
       border border-solid rounded
       border-(--border) hover:border-(--border-hover)
       p-4 
-      w-full sm:min-w-65 sm:max-w-65
+      w-full
       bg-(--elm-bg) hover:bg-(--elm-bg-hover)
       text-(--fg-muted)"
     >
