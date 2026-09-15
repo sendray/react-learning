@@ -9,25 +9,24 @@ const Header = () => {
   return (
     <nav className="flex w-full box-border justify-between items-center px-4 sm:px-6 md:px-12 py-4 bg-(--nav-bg) text-(--fg)">
       <div className="logo">
-        {/* <img alt="app-logo" src={APP_LOGO} className="w-12" /> */}
         <div className="bold text-2xl">React Learning</div>
       </div>
-      <ul className="flex gap-6 sm:gap-12">
+      {/* <ul className="flex gap-6 sm:gap-12">
         <li>
           <Link to="/">Home</Link>
         </li>
-        {/* <li>
+        <li>
           <Link to="/about">About</Link>
-        </li> */}
-        {/* <button
+        </li>
+        <button
           className="cursor-pointer"
           onClick={() => {
             btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
           }}
         >
           {btnName}
-        </button> */}
-      </ul>
+        </button>
+      </ul> */}
     </nav>
   );
 };

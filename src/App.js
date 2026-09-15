@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import CardContainer from "./components/CardContainer";
 import About from "./components/About";
 import CardDetails from "./components/CardDetails";
@@ -9,9 +10,10 @@ import Error from "./components/Error";
 
 const App = () => {
   return (
-    <div className="app">
+    <div>
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 };

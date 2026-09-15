@@ -31,8 +31,6 @@ const CardDetails = () => {
       <div className="subtitle">
         {email}, {phone}
       </div>
-      {/* <div>{city}</div> */}
-      {/* <div>{company.name}</div> */}
     </div>
   );
 };
