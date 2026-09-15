@@ -16,27 +16,33 @@ const App = () => {
   );
 };
 
-const routerConfig = createBrowserRouter([
+const routerConfig = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      errorElement: <Error />,
+      children: [
+        {
+          path: "/",
+          element: <CardContainer />,
+        },
+        {
+          path: "/about",
+          element: <About />,
+        },
+        {
+          path: "/details/:id",
+          element: <CardDetails />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "/",
-        element: <CardContainer />,
-      },
-      {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/details/:id",
-        element: <CardDetails />,
-      },
-    ],
+    basename:
+      window.location.hostname === "sendray.github.io" ? "/react-learning" : "/",
   },
-]);
+);
 
 const root = createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={routerConfig} />);

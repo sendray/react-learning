@@ -26,11 +26,11 @@ const CardContainer = () => {
   if (userDetails.length === 0) return <Shimmer />;
 
   return (
-    <div className="px-12">
+    <div className="w-full box-border px-4 sm:px-6 md:px-12">
       <div className="filter">
         <div className="search my-5">
           <input
-            className="p-4 h-10 w-125
+            className="p-4 h-10 w-full max-w-125
             border border-solid 
             border-(--border) hover:border-(--border-hover)
             bg-(--elm-bg) hover:bg-(--elm-bg-hover)"
@@ -60,9 +60,9 @@ const CardContainer = () => {
           Filter by rating
         </button> */}
       </div>
-      <div className="flex flex-wrap gap-5 items-center">
+      <div className="flex w-full flex-wrap gap-5 items-center">
         {mutableUserDetails.map((user) => (
-          <Link to={`/details/${user.id}`} key={user.id}>
+          <Link className="w-full sm:w-auto" to={`/details/${user.id}`} key={user.id}>
             <Card resData={user} />
           </Link>
         ))}
