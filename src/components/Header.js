@@ -7,12 +7,12 @@ const Header = () => {
   // const [btnName, setBtnName] = useState("Login");
 
   return (
-    <nav className="flex justify-between items-center px-12 py-4 bg-(--nav-bg) text-(--fg)">
+    <nav className="flex w-full box-border justify-between items-center px-4 sm:px-6 md:px-12 py-4 bg-(--nav-bg) text-(--fg)">
       <div className="logo">
         {/* <img alt="app-logo" src={APP_LOGO} className="w-12" /> */}
         <div className="bold text-2xl">React Learning</div>
       </div>
-      <ul className="flex gap-12">
+      <ul className="flex gap-6 sm:gap-12">
         <li>
           <Link to="/">Home</Link>
         </li>

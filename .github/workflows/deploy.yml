@@ -1,4 +1,4 @@
-name: Deploy react learning app
+name: Deploy Parcel App
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build project
+      - name: Build with Parcel
         run: npm run build
 
       - name: Upload artifact
