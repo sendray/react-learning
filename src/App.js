@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 import Header from "./components/Header";
 import CardContainer from "./components/CardContainer";
 import About from "./components/About";
+import CardDetails from "./components/CardDetails";
 import Error from "./components/Error";
 
 const App = () => {
@@ -28,6 +29,10 @@ const routerConfig = createBrowserRouter([
       {
         path: "/about",
         element: <About />,
+      },
+      {
+        path: "/details/:id",
+        element: <CardDetails />,
       },
     ],
   },

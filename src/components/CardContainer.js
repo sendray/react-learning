@@ -1,75 +1,70 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 import Card from "./Card";
 import Shimmer from "./Shimmer";
 
-import { SWIGGY_API } from "../utils/constants";
+import { MOCK_SERVER_USERS_LIST_API } from "../utils/constants";
 
 const CardContainer = () => {
-  const [restaurantsDetails, setRestaurantsDetails] = useState([]);
-  const [mutableRestaurantsDetails, setMutableRestaurantsDetails] = useState(
-    [],
-  );
-  const [inputText, setInputText] = useState("");
+  const [userDetails, setUserDetails] = useState([]);
+  const [mutableUserDetails, setMutableUserDetails] = useState([]);
+  // const [inputText, setInputText] = useState("");
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const res = await fetch(SWIGGY_API);
+    const res = await fetch(MOCK_SERVER_USERS_LIST_API);
     const resJson = await res.json();
 
-    setRestaurantsDetails(
-      resJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants,
-    );
-    setMutableRestaurantsDetails(
-      resJson?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants,
-    );
+    setUserDetails(resJson);
+    setMutableUserDetails(resJson);
   };
 
-  if (restaurantsDetails.length === 0) return <Shimmer />;
+  if (userDetails.length === 0) return <Shimmer />;
 
   return (
-    <div className="app-body">
+    <div className="px-12">
       <div className="filter">
-        <div className="search">
+        <div className="search my-5">
           <input
-            className="search-input"
+            className="p-4 h-10 w-125
+            border border-solid 
+            border-(--border) hover:border-(--border-hover)
+            bg-(--elm-bg) hover:bg-(--elm-bg-hover)"
             type="text"
-            value={inputText}
+            // value={inputText}
+            placeholder="Search by name"
             onChange={(e) => {
-              setInputText(e.target.value);
+              if (e.target.value?.length >= 3) {
+                const filteredResData = userDetails.filter((res) =>
+                  res.name.includes(e.target.value),
+                );
+                setMutableUserDetails(filteredResData);
+              } else {
+                setMutableUserDetails(userDetails);
+              }
             }}
           />
-          <button
-            className="search-btn"
-            onClick={() => {
-              const filteredResData = restaurantsDetails.filter((res) =>
-                res.info.name.includes(inputText),
-              );
-              setMutableRestaurantsDetails(filteredResData);
-            }}
-          >
-            Search
-          </button>
         </div>
-        <button
+        {/* <button
           onClick={() => {
-            const filteredResData = restaurantsDetails.filter(
+            const filteredResData = userDetails.filter(
               (res) => res.info.avgRating > 4.5,
             );
-            setMutableRestaurantsDetails(filteredResData);
+            setMutableUserDetails(filteredResData);
           }}
         >
           Filter by rating
-        </button>
+        </button> */}
       </div>
-      <div className="card-container">
-        {mutableRestaurantsDetails.map((restaurant) => (
-          <Card key={restaurant.info.id} resData={restaurant} />
+      <div className="flex flex-wrap gap-5 items-center">
+        {mutableUserDetails.map((user) => (
+          <Link to={`/details/${user.id}`} key={user.id}>
+            <Card resData={user} />
+          </Link>
         ))}
       </div>
     </div>

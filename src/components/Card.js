@@ -1,24 +1,21 @@
-import { CARD_IMAGE, SWIGGY_CARD_MEDIA_ASSETS_URL } from "../utils/constants";
-
 const Card = (props) => {
-  const {
-    name,
-    cuisines,
-    avgRating,
-    cloudinaryImageId,
-    sla: { deliveryTime },
-  } = props.resData.info;
+  const { name, email, phone, address, company } = props.resData;
 
   return (
-    <div className="card">
-      <img
-        alt="card-image"
-        src={`${SWIGGY_CARD_MEDIA_ASSETS_URL}${cloudinaryImageId}`}
-      />
-      <h2 className="title">{name}</h2>
-      <div className="subtitle">{cuisines.join(", ")}</div>
-      <div>{deliveryTime} mins</div>
-      <div>{avgRating} stars</div>
+    <div className="
+      border border-solid rounded
+      border-(--border) hover:border-(--border-hover)
+      p-4 
+      min-w-65 max-w-65 
+      bg-(--elm-bg) hover:bg-(--elm-bg-hover)
+      text-(--fg-muted)"
+    >
+      <h2 className="font-bold text-2xl text-(--accent)">
+        {name}
+      </h2>
+      <div className="text-sm mt-2 wrap-break-word">{email}</div>
+      <div className="text-xs mt-1">{address.city}</div>
+      <div className="text-xs">{company.name}</div>
     </div>
   );
 };
