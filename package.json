@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/sendray/react-learning/issues"
   },
-  "homepage": "https://github.com/sendray/react-learning",
+  "homepage": "https://sendray.github.io/react-learning/",
   "devDependencies": {
     "autoprefixer": "^10.6.0",
     "parcel": "^2.16.4",
