@@ -3,7 +3,6 @@ const Footer = () => {
     <footer
       style={{
         background: "var(--bg-subtle)",
-        // borderTop: "1px solid var(--border)",
         padding: "32px 24px",
         textAlign: "center",
       }}

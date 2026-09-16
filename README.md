@@ -21,6 +21,7 @@ This is a sample React learning application for exploring React concepts from ba
 - React `19.2.8`
 - React DOM `19.2.8`
 - React Router DOM `7.18.3`
+- TypeScript `5.9.3`
 - Parcel `2.16.4`
 - Tailwind CSS `4`
 - PostCSS with `@tailwindcss/postcss`
@@ -62,6 +63,14 @@ npm test
 
 Jest is declared as the test script entry point, but this project does not currently contain test files.
 
+### Type-check the project
+
+```bash
+npm run typecheck
+```
+
+TypeScript runs in strict mode using the settings in `tsconfig.json`.
+
 ## Available Scripts
 
 | Command | Description |
@@ -69,6 +78,7 @@ Jest is declared as the test script entry point, but this project does not curre
 | `npm start` | Start Parcel in development mode using `index.html` as the entry point |
 | `npm run build` | Create an optimized production bundle with Parcel |
 | `npm test` | Run the configured Jest command |
+| `npm run typecheck` | Check all TypeScript files without emitting JavaScript |
 
 ## Bundler and Build Configuration
 
@@ -77,11 +87,11 @@ Parcel is the build tool and bundler for this project. The entry point is define
 ```json
 {
 	"start": "parcel index.html",
-	"build": "parcel build index.html"
+	"build": "parcel build index.html --public-url ./"
 }
 ```
 
-Parcel handles module resolution, JSX transformation, asset processing, development serving, hot reload, and production bundling without a separate JavaScript configuration file.
+Parcel handles module resolution, TSX transformation, asset processing, development serving, hot reload, and production bundling without a separate bundler configuration file. TypeScript compiler settings are defined in `tsconfig.json`.
 
 The `browserslist` setting in `package.json` targets the last two browser versions:
 
@@ -116,26 +126,31 @@ The global stylesheet also provides the base `html` and `body` sizing rules. Mos
 ├── index.html                 # HTML entry point and React mount element
 ├── index.css                  # Tailwind import and global styles
 ├── package.json               # Scripts, dependencies, and browser targets
+├── tsconfig.json              # Strict TypeScript compiler configuration
 ├── .postcssrc                 # Tailwind PostCSS plugin configuration
 └── src/
-		├── App.js                 # React root, router, and route layout
+		├── App.tsx                # React root, router, and route layout
 		├── components/
-		│   ├── About.js           # About page and component examples
-		│   ├── Card.js            # User summary card
-		│   ├── CardContainer.js   # Fetching, searching, and card listing
-		│   ├── CardDetails.js     # Dynamic user details page
-		│   ├── Error.js            # Router error boundary view
-		│   ├── Header.js          # Navigation and login/logout state
-		│   ├── Shimmer.js          # Loading placeholder cards
-		│   ├── User.js             # Functional component example
-		│   └── UserClass.js        # Class component and state example
+		│   ├── About.tsx           # About page and component examples
+		│   ├── Card.tsx            # Typed user summary card
+		│   ├── CardContainer.tsx   # Fetching, searching, and card listing
+		│   ├── CardDetails.tsx     # Dynamic user details page
+		│   ├── Error.tsx           # Router error boundary view
+		│   ├── Footer.tsx          # Application footer
+		│   ├── Header.tsx          # Application header
+		│   ├── Shimmer.tsx         # Loading placeholder cards
+		│   ├── User.tsx            # Functional component example
+		│   └── UserClass.tsx       # Class component and typed state example
+		├── Notes/
+		│   └── CardContainer.tsx  # Feature notes shown above the cards
 		└── utils/
-				└── constants.js       # API endpoints and image asset URLs
+				└── constants.ts       # API endpoints and image asset URLs
+				└── types.ts           # Shared user data types
 ```
 
 ## Routes
 
-Routes are created in `src/App.js` with `createBrowserRouter`:
+Routes are created in `src/App.tsx` with `createBrowserRouter`:
 
 | Route | Component | Purpose |
 | --- | --- | --- |
@@ -174,7 +189,7 @@ The about page is a small learning area for comparing component styles. `User` d
 
 ## External Data and Assets
 
-URLs are centralized in `src/utils/constants.js`:
+URLs are centralized in `src/utils/constants.ts`:
 
 - `MOCK_SERVER_USERS_LIST_API`: user list and individual user details
 - `APP_LOGO`: header logo image
@@ -201,6 +216,7 @@ This repository is intended to be extended as a learning project. The current ex
 9. Navigation with `Link`
 10. Tailwind CSS and PostCSS integration
 11. Parcel development and production bundling
+12. TypeScript interfaces, typed props, state, events, and route parameters
 
 ## License
 

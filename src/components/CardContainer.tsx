@@ -1,38 +1,48 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import { Link } from "react-router";
-// import Markdown from 'react-markdown'
 
+import CardContainerNotes from "../Notes/CardContainer";
+import { MOCK_SERVER_USERS_LIST_API } from "../utils/constants";
+import type { User } from "../utils/types";
 import Card from "./Card";
 import Shimmer from "./Shimmer";
-import CardContainerNotes from "../Notes/CardContainer";
-
-import { MOCK_SERVER_USERS_LIST_API } from "../utils/constants";
 
 const CardContainer = () => {
-  const [userDetails, setUserDetails] = useState([]);
-  const [mutableUserDetails, setMutableUserDetails] = useState([]);
-
-  // const markdown = '# Hi, *Pluto*!'
+  const [userDetails, setUserDetails] = useState<User[]>([]);
+  const [mutableUserDetails, setMutableUserDetails] = useState<User[]>([]);
 
   useEffect(() => {
-    fetchData();
+    const fetchData = async () => {
+      const response = await fetch(MOCK_SERVER_USERS_LIST_API);
+      const responseJson = (await response.json()) as User[];
+
+      setUserDetails(responseJson);
+      setMutableUserDetails(responseJson);
+    };
+
+    void fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const res = await fetch(MOCK_SERVER_USERS_LIST_API);
-    const resJson = await res.json();
-
-    setUserDetails(resJson);
-    setMutableUserDetails(resJson);
-  };
-
   if (userDetails.length === 0) return <Shimmer />;
+
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    const searchText = event.target.value.toLowerCase();
+
+    if (searchText.length >= 3) {
+      setMutableUserDetails(
+        userDetails.filter((user) =>
+          user.name.toLowerCase().includes(searchText),
+        ),
+      );
+    } else {
+      setMutableUserDetails(userDetails);
+    }
+  };
 
   return (
     <div className="w-full box-border px-4 sm:px-6 md:px-12 min-h-screen">
       <CardContainerNotes />
 
-      {/* Filter  */}
       <div className="filter">
         <div className="search my-5">
           <input
@@ -42,18 +52,7 @@ const CardContainer = () => {
             bg-(--elm-bg) hover:bg-(--elm-bg-hover)"
             type="text"
             placeholder="Search by name"
-            onChange={(e) => {
-              if (e.target.value?.length >= 3) {
-                const filteredResData = userDetails.filter((res) =>
-                  res?.name
-                    ?.toLowerCase()
-                    .includes(e.target.value?.toLowerCase()),
-                );
-                setMutableUserDetails(filteredResData);
-              } else {
-                setMutableUserDetails(userDetails);
-              }
-            }}
+            onChange={handleSearch}
           />
         </div>
       </div>
