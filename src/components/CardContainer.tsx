@@ -1,7 +1,7 @@
 import { useEffect, useState, type ChangeEvent } from "react";
 import { Link } from "react-router";
 
-import CardContainerNotes from "../Notes/CardContainer";
+import CardContainerNotes from "../notes/CardContainer";
 import { MOCK_SERVER_USERS_LIST_API } from "../utils/constants";
 import type { User } from "../utils/types";
 import Card from "./Card";
