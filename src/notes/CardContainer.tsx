@@ -1,6 +1,6 @@
 const CardContainerNotes = () => {
   return (
-    <div className="my-5">
+    <div className="mb-5">
       <h2 className="font-extrabold text-(--fg-muted) mb-3">Features</h2>
       <ul className="list-disc ml-5 text-xs text-(--fg-muted)">
         <li>
@@ -39,6 +39,9 @@ const CardContainerNotes = () => {
           <span className="font-bold">Parcel</span> - Used as the project&apos;s
           build system, providing zero-config setup, fast builds, and automatic
           optimizations for development and production.
+        </li>
+        <li>
+          <span className="font-bold">List virtualization</span> with <span className="font-bold">react-window</span>
         </li>
       </ul>
     </div>
