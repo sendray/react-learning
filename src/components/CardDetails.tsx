@@ -2,18 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import { MOCK_SERVER_USERS_LIST_API } from "../utils/constants";
-import type { User } from "../utils/types";
+import type { IUser } from "../utils/types";
 
 const CardDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const [userDetails, setUserDetails] = useState<User | null>(null);
+  const [userDetails, setUserDetails] = useState<IUser | null>(null);
 
   useEffect(() => {
     if (!id) return;
 
     const fetchData = async () => {
       const response = await fetch(`${MOCK_SERVER_USERS_LIST_API}/${id}`);
-      const responseJson = (await response.json()) as User;
+      const responseJson = (await response.json()) as IUser;
 
       setUserDetails(responseJson);
     };

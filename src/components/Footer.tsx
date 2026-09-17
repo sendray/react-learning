@@ -3,18 +3,26 @@ const Footer = () => {
     <footer
       style={{
         background: "var(--bg-subtle)",
-        padding: "32px 24px",
+        padding: "24px 12px",
         textAlign: "center",
       }}
     >
-      <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "8px"
+        }}
+      >
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             gap: "10px",
-            marginBottom: "12px",
           }}
         >
           <div

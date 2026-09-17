@@ -1,16 +1,28 @@
-export interface UserAddress {
+export interface IComponentProps {
+  label: string;
+};
+
+export interface IUserAddress {
   city: string;
 }
 
-export interface UserCompany {
+export interface IUserCompany {
   name: string;
 }
 
-export interface User {
+export interface IUser {
   id: number;
   name: string;
   email: string;
   phone?: string;
-  address: UserAddress;
-  company: UserCompany;
+  address: IUserAddress;
+  company: IUserCompany;
+}
+
+export interface ICardProps {
+  resData: IUser;
+}
+
+export interface ICardRowProps {
+  users: IUser[];
 }

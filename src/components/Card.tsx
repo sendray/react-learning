@@ -1,10 +1,6 @@
-import type { User } from "../utils/types";
+import type { ICardProps } from "../utils/types";
 
-interface CardProps {
-  resData: User;
-}
-
-const Card = ({ resData }: CardProps) => {
+const Card = ({ resData }: ICardProps) => {
   const { name, email, address, company } = resData;
 
   return (

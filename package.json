@@ -19,9 +19,9 @@
   },
   "homepage": "https://sendray.github.io/react-learning/",
   "devDependencies": {
-    "autoprefixer": "^10.6.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "autoprefixer": "^10.6.0",
     "parcel": "^2.16.4",
     "postcss": "^8.5.28",
     "typescript": "^5.9.3"
@@ -31,6 +31,7 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.3",
+    "react-window": "^2.3.1",
     "styled-components": "^6.5.3",
     "tailwind": "^4.0.0"
   },

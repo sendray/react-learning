@@ -21,6 +21,7 @@ This is a sample React learning application for exploring React concepts from ba
 - React `19.2.8`
 - React DOM `19.2.8`
 - React Router DOM `7.18.3`
+- react-window `2.3.1` for virtualized card lists
 - TypeScript `5.9.3`
 - Parcel `2.16.4`
 - Tailwind CSS `4`
@@ -175,6 +176,17 @@ Renders the logo and links to the home and about pages. Its login button demonst
 
 Loads users from `MOCK_SERVER_USERS_LIST_API` when the component mounts. It keeps the original list and the currently filtered list in state, displays `Shimmer` while data is loading, and links each result to `/details/:id`.
 
+The card list uses `react-window` to virtualize rendering. Instead of mounting every card at once, it renders only the rows currently inside the scroll viewport plus a small overscan buffer.
+
+#### Virtualized list settings
+
+- Viewport height: `600px`
+- Row height: `140px`
+- Overscan: `3` additional rows near the visible area
+- Visible rows: approximately 4 rows at a time
+
+As the user scrolls inside the list, rows leaving the viewport are unmounted and new rows are rendered. This keeps the DOM smaller and improves rendering performance for larger user collections. Filtering updates the virtualized list through `rowCount` and `rowProps`.
+
 ### `Card` and `CardDetails`
 
 `Card` presents summary information including name, email, phone, city, and company. `CardDetails` reads the dynamic `id` route parameter with `useParams` and fetches the selected user.
@@ -217,6 +229,7 @@ This repository is intended to be extended as a learning project. The current ex
 10. Tailwind CSS and PostCSS integration
 11. Parcel development and production bundling
 12. TypeScript interfaces, typed props, state, events, and route parameters
+13. List virtualization with `react-window`
 
 ## License
 
