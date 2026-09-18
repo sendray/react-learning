@@ -7,7 +7,7 @@ import CardDetails from "./components/CardDetails";
 import Error from "./components/Error";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Explore from "./components/core-learning/components/Explore";
+import ManualCounter from "./components/core-learning/components/ManualCounter";
 
 const App = () => (
   <div>
@@ -29,7 +29,7 @@ const routerConfig = createBrowserRouter(
         { path: "/", element: <CardContainer /> },
         { path: "/about", element: <About /> },
         { path: "/details/:id", element: <CardDetails /> },
-        { path: "/explore", element: <Explore /> },
+        { path: "/explore", element: <ManualCounter /> },
       ],
     },
   ],
